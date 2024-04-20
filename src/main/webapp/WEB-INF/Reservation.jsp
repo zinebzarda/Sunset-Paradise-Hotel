@@ -8,6 +8,7 @@
 </head>
 <body>
  <%@ include file="taglibs.jsp" %>
+ <%@ include file="nav.jsp" %>
   <c:forEach var="res" items="${listreservation}">
         <p><c:out value="${res.getReservationId()}"></c:out></p>
         <p><c:out value="${res.getRoomId()}"></c:out></p>
@@ -15,7 +16,7 @@
         <p><c:out value="${res.getEndDate()}"></c:out></p>
 </c:forEach>
 <h1>Make a Reservation</h1>
-    <form action="reservation" method="post">
+    <form action="Reservation" method="post">
 
             <label for="id_res">Id reservation:</label>
         <input type="text" id="reservationId" name="reservationId" required><br>

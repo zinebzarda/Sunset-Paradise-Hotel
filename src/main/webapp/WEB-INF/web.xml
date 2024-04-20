@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
-         
- <servlet>
- <servlet-name>ReservationServlet</servlet-name>
- <servlet-class>com.hotel.servlets.ReservationServlet</servlet-class>
- </servlet>
- 
- <servlet-mapping>
- <servlet-name>ReservationServlet</servlet-name>
- <url-pattern>/reservation</url-pattern>
- </servlet-mapping>
- 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  
+  
   <servlet>
- <servlet-name>RoomServlet</servlet-name>
- <servlet-class>com.hotel.servlets.RoomServlet</servlet-class>
- </servlet>
- 
- <servlet-mapping>
- <servlet-name>RoomServlet</servlet-name>
- <url-pattern>/</url-pattern>
- </servlet-mapping>
- 
+  	<servlet-name>RoomServlet</servlet-name>
+  	<servlet-class>com.hotel.servlets.RoomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>ReservationServlet</servlet-name>
+  	<servlet-class>com.hotel.servlets.ReservationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationServlet</servlet-name>
+    <url-pattern>/Reservation</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ReservationSuccessServlet</servlet-name>
+  	<servlet-class>com.hotel.servlets.ReservationSuccessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReservationSuccessServlet</servlet-name>
+    <url-pattern>/Reservation</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SearchRoomsServlet</servlet-name>
+  	<servlet-class>com.hotel.servlets.SearchRoomsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchRoomsServlet</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
 </web-app>

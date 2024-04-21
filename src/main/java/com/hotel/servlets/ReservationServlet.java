@@ -1,7 +1,9 @@
 package com.hotel.servlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.Date;
+import java.sql.SQLException;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hotel.DAO.ReservationDAOimp;
-import com.hotel.model.Reservation;
+
 
 @WebServlet("/ReservationServlet")
 public class ReservationServlet extends HttpServlet {
@@ -18,15 +20,31 @@ public class ReservationServlet extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReservationDAOimp reservationdao = new ReservationDAOimp();
-        List<Reservation> reservations = reservationdao.selectAllReservation();
-        request.setAttribute("listreservation", reservations);
-        request.getRequestDispatcher("/WEB-INF/Reservation.jsp").forward(request, response);
+Integer roomId = Integer.valueOf(request.getParameter("roomId"));
+		
+		request.setAttribute("roomId", roomId);
+		 request.getRequestDispatcher("/WEB-INF/Form.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/Reservation.jsp").forward(request, response);
+		Date startDate=Date.valueOf(request.getParameter("startDate"));
+ 		Date endDate=Date.valueOf(request.getParameter("endDate"));
+ 	   Integer idRoom=Integer.valueOf(request.getParameter("roomId"));
+ 	 
+ 	   ReservationDAOimp reserve =new ReservationDAOimp();
+try {
+	reserve.Reserver(startDate,endDate,idRoom);
+} catch (ClassNotFoundException e) {
+	
+	e.printStackTrace();
+} catch (SQLException e) {
+	// TODO Auto-generated catch block 
+	e.printStackTrace();
+}
+
+            request.getRequestDispatcher("/WEB-INF/Form.jsp").forward(request, response);
 	}
+	
 
 }

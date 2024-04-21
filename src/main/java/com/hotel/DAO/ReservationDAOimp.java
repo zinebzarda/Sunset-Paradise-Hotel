@@ -1,6 +1,7 @@
 package com.hotel.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,19 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hotel.model.Reservation;
-import com.hotel.model.Room;
 
 public class ReservationDAOimp implements ReservationDAO{
-	
-private RoomDAO roomdao;
-	
-	String SELECT_RESERVATION_SQL="select * from reservation";
-	String SAVE_RESERVATION="INSERT INTO reservation (reservationId, roomId, startDate, endDate) VALUES (?, ?, ?, ?)"; 
-	String CANCEL_RESERVATION ="DELETE FROM reservation WHERE reservationId=?";
+	Connection cnx = connection.getConnection();
 
 	@Override
-	public List<Reservation> selectAllReservation() {
+	public void Reserver(Date startDate, Date endDate , Integer roomId) throws ClassNotFoundException, SQLException {
 		
+	
+		
+		String requet = "INSERT INTO reservation ( roomId, startDate, endDate) VALUES (?, ?, ?)";
+		
+		PreparedStatement ps= cnx.prepareStatement(requet);
+       
+            ps.setInt(1,roomId);
+            ps.setDate(2,startDate);
+            ps.setDate(3,endDate);
+            ps.executeUpdate();
+     
+               
+               String Requet = "UPDATE room SET availability=? WHERE roomId=?";
+                ps= cnx.prepareStatement(Requet);
+                ps.setDate(1,startDate);
+                ps.setInt(2,roomId);
+                ps.executeUpdate();
+		
+	}
+
+	@Override
+	public List<Reservation> ShowReservation() throws ClassNotFoundException, SQLException {
 		List<Reservation> reservations = new ArrayList<>();
         try {
             Connection cnx = connection.getConnection();
@@ -29,40 +46,18 @@ private RoomDAO roomdao;
 
             while(rs.next()) {
                 int reservationId = rs.getInt("reservationId");
+                Date startDate = rs.getDate("startDate");
+                Date endDate = rs.getDate("endDate");
                 int roomId = rs.getInt("roomId");
-                String startDate = rs.getDate("startDate").toString();
-                String endDate = rs.getString("endDate").toString();
-
-                reservations.add(new Reservation(reservationId,roomId,startDate,endDate));
+                reservations.add(new Reservation(reservationId,startDate,endDate,roomId));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return reservations;
 		
-	}
-	
-
-	@Override
-	public void saveReservation(Reservation reservation) throws SQLException {
-		Connection cnx = connection.getConnection();
-		PreparedStatement ps= cnx.prepareStatement(SAVE_RESERVATION);
-		ps.setInt(1, reservation.getReservationId());
-		ps.setInt(2,reservation.getRoomId());
-		ps.setString(3, reservation.getStartDate());
-		ps.setString(4, reservation.getEndDate());
-		ps.executeUpdate();
-		roomdao = new RoomDAOimp();
-		roomdao.isReserved(reservation.getRoomId());
-		
-	}
+	}}
 
 
-	@Override
-	public void cancelReservation(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
-}
+

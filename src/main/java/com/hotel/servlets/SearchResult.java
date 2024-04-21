@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hotel.DAO.ReservationDAOimp;
 import com.hotel.DAO.RoomDAOimp;
 
 /**
@@ -30,13 +31,16 @@ public class SearchResult extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RoomDAOimp roomDAOImp = new RoomDAOimp();
-		try {
-			request.setAttribute("arrayRoom", roomDAOImp.selectAllRoom());
-		} catch (SQLException e) {
+		ReservationDAOimp resrv=new ReservationDAOimp();
+		 try {
+			request.setAttribute("resrvs", resrv.ShowReservation());
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		this.getServletContext().getRequestDispatcher("SearchResult.jsp").forward(request, response);
+		}
+	        request.getRequestDispatcher("/WEB-INF/Reservation.jsp").forward(request, response);
+		
+	
 	}
 
 	/**

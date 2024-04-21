@@ -16,7 +16,7 @@ body{
 		justify-content: space-between;
 		width:100%;
 		height:100vh;
-    	background: url('https://i.ibb.co/Z8XKpgV/vecteezy-a-modern-hotel-room-with-a-bed-desk-and-television-33390885.jpg') no-repeat bottom right/cover;
+    	background: url(https://i.ibb.co/Z8XKpgV/vecteezy-a-modern-hotel-room-with-a-bed-desk-and-television-33390885.jpg) no-repeat bottom right/cover;
     	  backdrop-filter: blur(2px);
 }
 .card {
@@ -158,11 +158,11 @@ text-align:center;
   </div>
   
     <div class="form">
-    <h6 >ROOMS & SUITES</h6>
+    <h6 >ROOMS and SUITES</h6>
     <h4>Reserve Your Room</h4>
       <form action="reserve" method="post">
         <input type="Date" name="Datearrive" placeholder="Date d'arriv�e"> 
-        <input type="Date" name="Datedepart" placeholder="Date de d�part"> 
+        <input type="Date" name="Datedepart" placeholder="Date de depart"> 
         <input  type="hidden" name="idRoom" value="${roomId}" placeholder="ID de la chambre"> 
         <button onclick="reserved()" type="submit">Reserver</button>
         <script type="text/javascript">

@@ -17,7 +17,7 @@ public class RoomDAOimp implements RoomDAO {
 	@Override
 	public List<Room> AfficherRoom() throws ClassNotFoundException, SQLException{
 	 List<Room> room=new ArrayList<Room>();
-		String requet = "SELECT * FROM room WHERE Disponibilite IS NULL OR Disponibilite<NOW()";
+		String requet = "SELECT * FROM room WHERE availability IS NULL OR availability<NOW()";
 		
 	PreparedStatement ps= cnx.prepareStatement(requet);
        ResultSet resultat = ps.executeQuery();

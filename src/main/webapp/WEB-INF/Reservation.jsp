@@ -121,9 +121,9 @@
       <tbody>
         <c:forEach var="reserv" items="${resrvs}">
           <tr>
-            <td>${reserv.getId_reservation()}</td>
-            <td>${reserv.getDate_debut()}</td>
-            <td>${reserv.getDate_depart()}</td>
+            <td>${reserv.getreservationId}</td>
+            <td>${reserv.getStartDate()}</td>
+            <td>${reserv.getEndDate()}</td>
           </tr>
         </c:forEach>
       </tbody>

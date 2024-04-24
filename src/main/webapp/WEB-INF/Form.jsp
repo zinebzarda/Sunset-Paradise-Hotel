@@ -5,10 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<title>Accueil - Mon H�tel</title>
+<title> Mon H�tel</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
 <style>
 body{
 		display:flex;
@@ -16,7 +15,7 @@ body{
 		justify-content: space-between;
 		width:100%;
 		height:100vh;
-    	background: url(https://i.ibb.co/Z8XKpgV/vecteezy-a-modern-hotel-room-with-a-bed-desk-and-television-33390885.jpg) no-repeat bottom right/cover;
+    	background: url('https://i.pinimg.com/564x/6f/71/a8/6f71a8d9be6ab275d57def66f41478fc.jpg') no-repeat bottom right/cover;
     	  backdrop-filter: blur(2px);
 }
 .card {
@@ -30,27 +29,25 @@ body{
         font-weight: bold;
     }
     .footer {
-        background-color: #f8f9fa;
+        background-color: rgb(193, 154, 107 ,0.8);
         padding: 10px 0;
         text-align: center;
     }
-    .brf{
-    display:flex;
-    justify-content: space-evenly
-    }
+   
     p{
     margin : 0;
     }
 
-.form{
-  width: 300px; /* Largeur du cadre */
-  margin-right: 20px;
-   /* Marge � droite pour l'espacement */
+.form {
+  width: 300px;
+  margin: 0 auto; /* Centre le formulaire horizontalement */
+  margin-top: 100px; /* Ajoute un espace en haut pour le positionner verticalement */
   padding: 20px;
-  background-color: #ccd8ff; /* Couleur blanche pour le cadre */
+  background-color:  rgb(193, 154, 107 ,0.8);
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 form {
   display: flex;
@@ -68,14 +65,14 @@ button {
 }
 
 button {
-  background-color: #007bff;
+  background-color: rgb(111, 78, 55);
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: rgb(193, 154, 107);
 }
  nav{
         position: fixed;
@@ -122,9 +119,12 @@ text-align:center;
  
 }
 </style>
+</head>
+<body>
+<header>
   <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Paradise Hotel</a>
+      
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -134,10 +134,10 @@ text-align:center;
                         <a class="nav-link" href="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="se">Historique de reservation</a>
+                        <a class="nav-link" href="se">Historique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Nous</a>
+                        <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -146,24 +146,16 @@ text-align:center;
             </div>
         </div>
     </nav>
-  <div class="brf">
-  <div class='text'>
-  <h3>Welcome to Paradise Hotel</h3>
-      <p>Discover a world of luxury and comfort at Paradise Hotel. Our elegant rooms and suites are designed to provide you with the ultimate relaxation experience. Whether you're here for business or leisure, our hotel offers world-class amenities and exceptional service to make your stay unforgettable.</p>
-      <div class="reserTel">
-      <h5 class="reserText">Phone Reservation :</h5>
-      <h4 class="reserNum">+212 5 666 634 210</h4>
-      </div>
-      
-  </div>
+   
+</header>
   
     <div class="form">
     <h6 >ROOMS and SUITES</h6>
     <h4>Reserve Your Room</h4>
-      <form action="reserve" method="post">
-        <input type="Date" name="Datearrive" placeholder="Date d'arriv�e"> 
-        <input type="Date" name="Datedepart" placeholder="Date de depart"> 
-        <input  type="hidden" name="idRoom" value="${roomId}" placeholder="ID de la chambre"> 
+      <form action="ReservationServlet" method="post">
+        <input type="Date" name="startDate" > 
+        <input type="Date" name="endDate" > 
+        <input  type="hidden" name="roomId" value="${roomId}" placeholder="ID de la chambre"> 
         <button onclick="reserved()" type="submit">Reserver</button>
         <script type="text/javascript">
         	function reserved(){
@@ -172,11 +164,11 @@ text-align:center;
         </script>
       </form>
     </div>
-  </div>
+
     
     <footer class="footer">
     
-        <p> 2024 Mon H�tel. Tous droits r�serv�s.</p>
+        <p> 2022 Mon Hotel.</p>
     
 </footer>
 

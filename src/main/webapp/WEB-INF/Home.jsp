@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accueil - Mon Hôtel</title>
+<title> Mon Hôtel</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
     .card {
@@ -20,7 +20,7 @@
         font-weight: bold;
     }
     .footer {
-        background-color: #f8f9fa;
+        background-color:rgb(193, 154, 107 ,0.8);
         padding: 10px 0;
         text-align: center;
     }
@@ -39,7 +39,7 @@ header {
 
   height: 600px;
   backdrop-filter: blur(50px);
-  background: url('https://i.ibb.co/Z8XKpgV/vecteezy-a-modern-hotel-room-with-a-bed-desk-and-television-33390885.jpg') no-repeat bottom right/cover;
+  background: url('https://i.pinimg.com/564x/51/9d/72/519d7225689627fe18770528905a9927.jpg') no-repeat bottom right/cover;
 }
 
     .title{
@@ -70,7 +70,7 @@ header {
     top: 1px;
     width: 90%;
     height: 100px;
-    background: rgba(150, 200, 255, 0.8);
+    background: rgb(193, 154, 107 ,0.8);
 
 }
 
@@ -85,7 +85,6 @@ header {
 </style>
 </head>
 <body>
-
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -96,13 +95,13 @@ header {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Acceuil">Accueil</a>
+                        <a class="nav-link" href="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="se">Historique de reservation</a>
+                        <a class="nav-link" href="se">Historique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Nous</a>
+                        <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -114,45 +113,42 @@ header {
     
     <div class="title">
     	<h2>Welcome to Paradise Hotel</h2>
-  
-    	<h4>Enjoy spending your time with us</h4>
+   
     </div>
     
     
 </header>
 
 
-
 <div class="rounded m-5 check-availabilty" id="next">
-                <form id="formCheck" method="post" action="room" class="form-checking row" >
-                    <div class="col-md-2 mb-2">
-                        <label for="CheckIn">Check In</label>
-                        <input class="form-control mt-1" type="date" id="start" name="datearriverr" value="2024-04-19" min="2024-01-01" max="2030-12-31" />
-                    </div>
-              
-                    <div class="col-md-2 mb-2">
-                        <label for="inputAdulte">Type</label>
-                        <input class="form-control mt-1" type="text" id="inputType"value="Chambre" name="Type">
-                           
-                    </div>
-                    <div class="col-md-1 mb-2">
-                        <label for="inputAdulte">Nombre</label>
-                        <input class="form-control mt-1" type="Number" id="inputAdulte" value="1" name="nbr">
-                           
-                    </div>
-                   <div>
-                    <button id="checkRoom"  style="position: relative; top:10px;background-color: #1F75FE; height: 40px; width: 200px;" class="border-0 mx-5 mt-4 text-light rounded" style="background-color: #1F75FE;"  type="submit" class="btn">Check Availabilty</button>
-                    </div>
-                </form>
-              </div>
-              
+    <form id="formCheck" method="post" action="s" class="form-checking row">
+       
+        <div class="col-md-2 mb-2">
+            <label for="inputAdulte">Type</label>
+            <input class="form-control mt-1" type="text" id="inputType"value="" name="type">
+        </div>
+        <div class="col-md-1 mb-2">
+            <label for="inputAdulte">Nombre</label>
+            <input class="form-control mt-1" type="Number" id="inputAdulte" value="" name="Nombre_personne">
+        </div>
+        <div>
+            <button id="checkRoom" style="position: relative; top:10px; background-color: rgb(111, 78, 55); height: 40px; width: 200px;" class="border-0 mx-5 mt-4 text-light rounded" type="submit">Check Availabilty</button>
+           
+        </div>
+    </form>
+</div>
+
+          <c:if test="${roomsi.size() == 0 }">   
+          <h1>Room not fond</h1>
+        
+          </c:if>
 
 
 <div class="container">
 
    
     <div class="row">
-        <c:forEach var="room" items="${rooms}">
+        <c:forEach var="room" items="${roomsi}">
             <div class="col-md-4">
                 <div class="card">
                     <img src="${room.getImg()}" class="card-img-top" alt="Chambre">
@@ -162,7 +158,7 @@ header {
                         <p class="card-text my-2">${room.getEquipement()}</p>
                         <p class="card-text my-2">Prix : ${room.getPrix()} DH Par nuit</p>
                         <p class="card-text my-2">Nombre de Personne : ${room. getNombre_personne()} </p>
-                        <a href="reserve?roomId=${room.getRoomId()}" class="btn btn-primary my-2">Réserver</a>
+                        <a href="reserve?roomId=${room.getRoomId()}" class="btn btn-outline-dark my-2">Réserver</a>
                     </div>
                 </div>
             </div>
@@ -181,9 +177,9 @@ header {
                    
                         <h5 class="card-title my-2">${room.getType()}</h5>
                         <p class="card-text my-2">${room.getEquipement()}</p>
-                        <p class="card-text my-2">Prix : ${room.getPrix()} DH / Par nuit</p>
-                        <p class="card-text my-2">Nombre de Personne : ${room. getNombre_personne()} </p>
-                        <a href="reserve?Id=${room.getId()}" class="btn btn-primary my-2">Réserver</a>
+                        <p class="card-text my-2">Prix : ${room.getPrix()} DH</p>
+                        <p class="card-text my-2">Nombre de Personne : ${room.getNombre_personne()} </p>
+                        <a href="reserve?roomId=${room.getRoomId()}" class="btn btn-outline-dark my-2">Réserver</a>
                     </div>
                 </div>
             </div>
@@ -194,7 +190,7 @@ header {
 
 <footer class="footer">
     <div class="container">
-        <p> 2024 Mon Hôtel. Tous droits réservés.</p>
+        <p> 2022 Mon Hôtel.</p>
     </div>
 </footer>
 

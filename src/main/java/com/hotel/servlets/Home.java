@@ -30,20 +30,20 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 RoomDAOimp room = new RoomDAOimp();
+		RoomDAOimp room = new RoomDAOimp();
 		 
-	 	    try {
-	 	    	
-	 	        request.setAttribute("rooms", room.AfficherRoom());
-	 	        request.getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
-	 	    } catch (SQLException e) {
-	 	        e.printStackTrace();
-	 	    } catch (ClassNotFoundException e) {
-				
-					e.printStackTrace();
-				}
-
-		}
+ 	    try {
+ 	    	
+ 	        request.setAttribute("roomsi",room.DisplayRoom());
+ 	       
+ 	    } catch (SQLException e) {
+ 	        e.printStackTrace();
+ 	    } catch (ClassNotFoundException e) {
+			
+				e.printStackTrace();
+			}
+ 	   request.getRequestDispatcher("/WEB-INF/Home.jsp").forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

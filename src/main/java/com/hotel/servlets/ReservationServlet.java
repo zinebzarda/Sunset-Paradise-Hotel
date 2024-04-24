@@ -1,4 +1,4 @@
-package com.hotel.servlets;
+ package com.hotel.servlets;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -20,7 +20,7 @@ public class ReservationServlet extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Integer roomId = Integer.valueOf(request.getParameter("roomId"));
+		Integer roomId = Integer.valueOf(request.getParameter("roomId"));
 		
 		request.setAttribute("roomId", roomId);
 		 request.getRequestDispatcher("/WEB-INF/Form.jsp").forward(request, response);
@@ -28,23 +28,23 @@ Integer roomId = Integer.valueOf(request.getParameter("roomId"));
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Date startDate=Date.valueOf(request.getParameter("startDate"));
- 		Date endDate=Date.valueOf(request.getParameter("endDate"));
- 	   Integer idRoom=Integer.valueOf(request.getParameter("roomId"));
- 	 
- 	   ReservationDAOimp reserve =new ReservationDAOimp();
-try {
-	reserve.Reserver(startDate,endDate,idRoom);
-} catch (ClassNotFoundException e) {
-	
-	e.printStackTrace();
-} catch (SQLException e) {
-	// TODO Auto-generated catch block 
-	e.printStackTrace();
-}
+	    
+	    Date startDate = Date.valueOf(request.getParameter("startDate"));
+	    Date endDate = Date.valueOf(request.getParameter("endDate"));
+	    Integer roomId = Integer.valueOf(request.getParameter("roomId"));
 
-            request.getRequestDispatcher("/WEB-INF/Form.jsp").forward(request, response);
+	    try {
+	        
+	        ReservationDAOimp reserve = new ReservationDAOimp();
+	        reserve.Reserver(endDate,startDate, roomId);
+	    } catch (Exception e) {
+	        // Handle any exceptions that occur during the reservation process
+	        e.printStackTrace();
+	    }
+
+	    // Redirect the user to the search result page after the reservation is processed
+	    response.sendRedirect(request.getContextPath() + "/SearchResult");
 	}
-	
+
 
 }

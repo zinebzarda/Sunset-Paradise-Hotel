@@ -17,6 +17,12 @@ public class Reservation {
 	public int getReservationId() {
 		return reservationId;
 	}
+	public Reservation(int roomId, Date startDate, Date endDate) {
+		super();
+		this.roomId = roomId;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}

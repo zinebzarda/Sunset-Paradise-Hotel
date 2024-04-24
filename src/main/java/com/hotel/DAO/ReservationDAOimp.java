@@ -11,37 +11,29 @@ import java.util.List;
 import com.hotel.model.Reservation;
 
 public class ReservationDAOimp implements ReservationDAO{
-	Connection cnx = connection.getConnection();
+	
 
 	@Override
 	public void Reserver(Date startDate, Date endDate , Integer roomId) throws ClassNotFoundException, SQLException {
 		
-	
+		System.out.println("Reserver");
 		
 		String requet = "INSERT INTO reservation ( roomId, startDate, endDate) VALUES (?, ?, ?)";
-		
-		PreparedStatement ps= cnx.prepareStatement(requet);
-       
+		System.out.println(requet);
+		PreparedStatement ps= connection.getConnection().prepareStatement(requet);
             ps.setInt(1,roomId);
             ps.setDate(2,startDate);
             ps.setDate(3,endDate);
             ps.executeUpdate();
-     
-               
-               String Requet = "UPDATE room SET availability=? WHERE roomId=?";
-                ps= cnx.prepareStatement(Requet);
-                ps.setDate(1,startDate);
-                ps.setInt(2,roomId);
-                ps.executeUpdate();
-		
+
 	}
 
 	@Override
 	public List<Reservation> ShowReservation() throws ClassNotFoundException, SQLException {
 		List<Reservation> reservations = new ArrayList<>();
         try {
-            Connection cnx = connection.getConnection();
-            PreparedStatement ps= cnx.prepareStatement("select * from reservation");
+           
+            PreparedStatement ps= connection.getConnection().prepareStatement("select * from reservation");
             ResultSet rs= ps.executeQuery();
 
             while(rs.next()) {

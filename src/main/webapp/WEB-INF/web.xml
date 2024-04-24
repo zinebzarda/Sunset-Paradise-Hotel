@@ -21,12 +21,21 @@
   
   
   <servlet>
-    <servlet-name>FReserve</servlet-name>
-    <servlet-class>com.hotel.servlets.FReserve</servlet-class>
+    <servlet-name>ReservationServlet</servlet-name>
+    <servlet-class>com.hotel.servlets.ReservationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FReserve</servlet-name>
+    <servlet-name>ReservationServlet</servlet-name>
     <url-pattern>/reserve</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>com.hotel.servlets.Search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/s</url-pattern>
   </servlet-mapping>
   
   

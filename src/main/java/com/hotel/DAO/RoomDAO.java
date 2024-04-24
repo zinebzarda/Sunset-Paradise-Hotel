@@ -7,6 +7,6 @@ import java.util.List;
 import com.hotel.model.Room;
 
 public interface RoomDAO {
-	List<Room> AfficherRoom() throws ClassNotFoundException, SQLException;
-	List<Room> search(Date startDate,Integer nbr,String Type) throws ClassNotFoundException, SQLException;
+	List<Room> DisplayRoom() throws ClassNotFoundException, SQLException;
+	List<Room> search(String Type , Integer nbr) throws ClassNotFoundException, SQLException;
 	}
